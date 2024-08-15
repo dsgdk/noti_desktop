@@ -1,7 +1,6 @@
 
 # Telegram Keyword Monitor 
 
-
 A Python-based application that monitors specified Telegram channels for certain keywords and displays matching messages in a GUI.
 
 ## Features
