@@ -1,6 +1,8 @@
 
 # Telegram Keyword Monitor 
 
+**Note**: This repository is no longer maintained. Please use the updated version of the application here: [noti_v2](https://github.com/dsgdk/noti_v2.git).
+
 A Python-based application that monitors specified Telegram channels for certain keywords and displays matching messages in a GUI.
 
 ## Features
