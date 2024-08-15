@@ -19,7 +19,7 @@ A Python-based application that monitors specified Telegram channels for certain
 ## Installation
 1. **Clone the repository**:
     ```bash
-    git clone 
+    git clone https://github.com/dsgdk/noti_v2.git
     cd noti_v2
     ```
 2. **Install the required Python packages**:
