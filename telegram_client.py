@@ -7,6 +7,7 @@
 # and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 from telethon import TelegramClient, events
+from telethon.tl.functions.messages import SendMessageRequest
 import asyncio
 import configparser
 import pygame
@@ -22,6 +23,9 @@ keywords = config.get('keywords', 'keywords').split(', ')
 alert_sound_path = config.get('sounds', 'alert_sound')
 
 client = TelegramClient('session_name', api_id, api_hash)
+
+# Завантаження ID особистого каналу з конфігурації
+personal_channel_id = config.get('personal_channel', 'channel_id')
 
 # Ініціалізація pygame для відтворення звуку
 pygame.mixer.init()
@@ -41,5 +45,12 @@ async def start_telegram_client(signal_emitter):
                 
                 # Відтворення звукового сигналу
                 signal_emitter.new_message_signal.emit(channel_name, message_text)
+                
+                # Відправка повідомлення в особистий канал
+                await client(SendMessageRequest(
+                    peer=personal_channel_id,
+                    message=f"Нове повідомлення з групи {channel_name}: {message_text}",
+                    no_webpage=True
+                ))
 
     await client.run_until_disconnected()
